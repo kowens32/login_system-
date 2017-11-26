@@ -26,7 +26,6 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*"
-
   },
   "bugs": {
     "url": "https://github.com/kowens32/login_system-/issues"
