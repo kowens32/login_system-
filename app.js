@@ -50,6 +50,12 @@ app.use(session({
     resave: true
 }));
 
+
+//Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 //Express Validator
 app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
@@ -66,3 +72,25 @@ app.use(expressValidator({
         };
     }
 }));
+
+//connect flash middleware
+app.use(flash());
+
+//Global Vars
+app.use(function(req, res, next){
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.errors_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
+
+app.use('/', routes);
+app.use('/users', users);
+
+//Set Port
+app.set('port', (process.env.PORT || 3000));
+
+app.listen(app.get('port'), function(){
+    console.log('Server started on port ' +app.get('port'));
+});
+
