@@ -27,7 +27,7 @@ var mySql = require('mysql');
 //     createProduct();
 // });
 
-var router = require('./routes/index');
+var routes = require('./routes/index');
 var users = require('./routes/users');
 
 //Init App
@@ -35,7 +35,7 @@ var app = express();
 
 //VIew Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
+app.engine('handlebars', exphbs({defaultLayout: 'layouts'}));
 app.set('view engine', 'handlebars');
 
 //BodyParser Middleware
